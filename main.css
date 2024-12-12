@@ -5,9 +5,26 @@ body {
 #logo-header {
     width: auto;
     height: 100px;
+    margin-top: 10px;
+}
+
+footer{
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: Arial;
+    font-size: 15px;
     margin: 10px 0;
 }
 
 #tabla-pokemon{
     margin-top: 50px;
+}
+
+#boton-anterior{
+    visibility: hidden;
+}
+
+#boton-siguiente{
+    visibility: hidden;
 }

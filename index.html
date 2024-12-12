@@ -9,28 +9,32 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pokemon-solid">
     <link href="https://fonts.cdnfonts.com/css/pokemon-hollow" rel="stylesheet">
-                
+
 </head>
 
 <body>
-    <header class="text-center">
+    <header class="text-center m-3">
         <img id="logo-header" src="img/pokemon-logo.png" alt="logo de Pokémon" class="img-fluid">
     </header>
 
     <div class="d-flex justify-content-center">
-      <table id="tabla-pokemon" class="table text-center w-75 table-hover table-dark">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Pokémon</th>
-          </tr>
-        </thead>
-        <tbody id="lista-pokemones">
-            <!--  -->
-        </tbody>
-      </table>
+        <table id="tabla-pokemon" class="table text-center w-75 table-hover table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Pokémon</th>
+                </tr>
+            </thead>
+            <tbody id="lista-pokemones">
+                <!--  -->
+            </tbody>
+        </table>
     </div>
 
+    <div class="container m-3 d-flex justify-content-between">
+            <button id="boton-anterior" type="button" class="btn btn-primary">Anterior</button>
+            <button id="boton-siguiente" type="button" class="btn btn-primary">Siguiente</button>
+    </div>
 
     <script type="text/javascript" src="src/index.js"></script>
 </body>
