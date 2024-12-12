@@ -2,10 +2,17 @@ body {
     background-color: #212529;
 }
 
-#logo-header {
+header {
+    display: flex;
+    justify-content: center;
     width: auto;
     height: 100px;
-    margin-top: 10px;
+    margin: 30px;
+}
+
+#botones-menu{
+    display: flex;
+    justify-content: space-around;
 }
 
 footer{
@@ -17,8 +24,12 @@ footer{
     margin: 10px 0;
 }
 
-#tabla-pokemon{
+table{
     margin-top: 50px;
+}
+
+#tabla-pokemones{
+    visibility: hidden;
 }
 
 #boton-anterior{

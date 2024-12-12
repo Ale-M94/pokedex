@@ -1,5 +1,9 @@
 const pokeApi = 'https://pokeapi.co/api/v2/pokemon/';
-const tablaPokemones = document.querySelector('#lista-pokemones');
+const $listaPokemon = document.querySelector('#boton-lista-completa');
+const $buscarPorNombre= document.querySelector('#boton-buscar-nombre');
+const $buscarPorNumero = document.querySelector('#boton-buscar-numero');
+const tablaPokemones = document.querySelector('#tabla-pokemones');
+const listaPokemones = document.querySelector('#lista-pokemones');
 const $siguiente = document.querySelector('#boton-siguiente');
 const $anterior = document.querySelector('#boton-anterior');
 
@@ -10,7 +14,7 @@ function obtenerListaPokemon(url){
     fetch(url)
     .then(response => response.json())
     .then(responseJSON => {
-        tablaPokemones.innerHTML = '';
+        listaPokemones.innerHTML = '';
 
         responseJSON.results.forEach((pokemon, index) =>{
             const numeroPokemon = (paginaActual - 1) * limitePorPagina + (index + 1);
@@ -24,7 +28,9 @@ function obtenerListaPokemon(url){
             celdaNombre.textContent = pokemon.name;
             fila.appendChild(celdaNombre);
 
-            tablaPokemones.appendChild(fila);
+            fila.value = pokemon.url;
+
+            listaPokemones.appendChild(fila);
         });
 
         if (responseJSON.next) {
@@ -54,7 +60,10 @@ function obtenerListaPokemon(url){
 
 
 
+$listaPokemon.onclick = function(){
+    tablaPokemones.style.visibility = 'visible';
+    obtenerListaPokemon(pokeApi);
+};
 
-obtenerListaPokemon(pokeApi);
 
 

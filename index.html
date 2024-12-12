@@ -13,12 +13,18 @@
 </head>
 
 <body>
-    <header class="text-center m-3">
+    <header>
         <img id="logo-header" src="img/pokemon-logo.png" alt="logo de Pokémon" class="img-fluid">
     </header>
 
+    <div id="botones-menu">
+        <button type="button" class="btn btn-outline-warning" id="boton-lista-completa">Lista de Pokémons</button>
+        <button type="button" class="btn btn-outline-warning" id="boton-buscar-nombre">Buscar Pokémon por nombre</button>
+        <button type="button" class="btn btn-outline-warning" id="boton-buscar-numero">Buscar Pokémon por número</button>    
+    </div>
+
     <div class="d-flex justify-content-center">
-        <table id="tabla-pokemon" class="table text-center w-75 table-hover table-dark">
+        <table id="tabla-pokemones" class="table text-center w-75 table-hover table-dark">
             <thead>
                 <tr>
                     <th scope="col">#</th>
