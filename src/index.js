@@ -9,6 +9,7 @@ const valorNumero = document.querySelector('#numero-pokemon');
 const $buscarPorNumero = document.querySelector('#boton-buscar-numero');
 
 const tablaPokemones = document.querySelector('#tabla-pokemones');
+const tarjetaPokemones = document.querySelector('#tarjeta-pokemon');
 
 const listaPokemones = document.querySelector('#lista-pokemones');
 const $siguiente = document.querySelector('#boton-siguiente');
@@ -70,11 +71,16 @@ function obtenerListaPokemon(url){
 
 $listaPokemon.onclick = function(){
     tablaPokemones.classList.remove('d-none');
+    tarjetaPokemones.classList.add('d-none');
     obtenerListaPokemon(pokeApi);
 };
 
 $buscarPorNombre.onclick = function(event){
     event.preventDefault;
+
+    tablaPokemones.classList.add('d-none');
+    $anterior.classList.add('d-none');
+    $siguiente.classList.add('d-none');
 
     if(valorNombre.value === ''){
         alert('Ingrese un nombre');
@@ -87,7 +93,7 @@ $buscarPorNombre.onclick = function(event){
     fetch(`https://pokeapi.co/api/v2/pokemon/${nombreCorregido}`)
     .then(response => response.json())
     .then(responseJSON =>{
-        document.querySelector('#tarjeta-pokemon').classList.remove('d-none')
+        tarjetaPokemones.classList.remove('d-none')
         const tipos = responseJSON.types.map(tipos => tipos.type.name)
 
         document.querySelector('.card-title').innerHTML = responseJSON.species.name
@@ -102,3 +108,32 @@ $buscarPorNombre.onclick = function(event){
     .catch(error => console.error('El nombre ingresado no es válido', error))
 }
 
+$buscarPorNumero.onclick = function(event){
+    event.preventDefault;
+
+    tablaPokemones.classList.add('d-none');
+    $anterior.classList.add('d-none');
+    $siguiente.classList.add('d-none');
+
+    if(valorNumero.value === ''){
+        alert('Ingrese un nombre');
+        return;
+    };
+    
+    fetch(`https://pokeapi.co/api/v2/pokemon/${valorNumero.value}`)
+    .then(response => response.json())
+    .then(responseJSON =>{
+        tarjetaPokemones.classList.remove('d-none')
+        const tipos = responseJSON.types.map(tipos => tipos.type.name)
+
+        document.querySelector('.card-title').innerHTML = responseJSON.species.name
+        document.querySelector('.card-text').innerHTML = `Número: ${responseJSON.id}<br>
+        Tipos: ${tipos.join(', ')}<br>
+        Altura: ${responseJSON.height}<br>
+        Peso: ${responseJSON.weight}`
+        document.querySelector('#imagen-pokemon').src = responseJSON.sprites.front_default
+
+    })
+
+    .catch(error => console.error('El número ingresado no es válido', error))
+}
