@@ -1,8 +1,15 @@
 const pokeApi = 'https://pokeapi.co/api/v2/pokemon/';
+
 const $listaPokemon = document.querySelector('#boton-lista-completa');
+
+const valorNombre = document.querySelector('#nombre-pokemon');
 const $buscarPorNombre= document.querySelector('#boton-buscar-nombre');
+
+const valorNumero = document.querySelector('#numero-pokemon');
 const $buscarPorNumero = document.querySelector('#boton-buscar-numero');
+
 const tablaPokemones = document.querySelector('#tabla-pokemones');
+
 const listaPokemones = document.querySelector('#lista-pokemones');
 const $siguiente = document.querySelector('#boton-siguiente');
 const $anterior = document.querySelector('#boton-anterior');
@@ -34,23 +41,24 @@ function obtenerListaPokemon(url){
         });
 
         if (responseJSON.next) {
-            $siguiente.style.visibility = 'visible';
+            $siguiente.classList.remove('d-none');
             $siguiente.onclick = function () {
                 paginaActual++;
                 obtenerListaPokemon(responseJSON.next);
             };
         } else {
-            $siguiente.style.visibility = 'hidden';
+            $siguiente.classList.add('d-none');
         };
 
         if (responseJSON.previous) {
-            $anterior.style.visibility = 'visible';
+            $anterior.classList.remove('d-none');
+
             $anterior.onclick = function () {
                 paginaActual--;
                 obtenerListaPokemon(responseJSON.previous);
             };
         } else {
-            $anterior.style.visibility = 'hidden';
+            $anterior.classList.add('d-none');
         }
 
     })
@@ -61,9 +69,36 @@ function obtenerListaPokemon(url){
 
 
 $listaPokemon.onclick = function(){
-    tablaPokemones.style.visibility = 'visible';
+    tablaPokemones.classList.remove('d-none');
     obtenerListaPokemon(pokeApi);
 };
 
+$buscarPorNombre.onclick = function(event){
+    event.preventDefault;
 
+    if(valorNombre.value === ''){
+        alert('Ingrese un nombre');
+        return;
+    };
+
+    let nombreCorregido = valorNombre.value.toLowerCase()
+
+    
+    fetch(`https://pokeapi.co/api/v2/pokemon/${nombreCorregido}`)
+    .then(response => response.json())
+    .then(responseJSON =>{
+        document.querySelector('#tarjeta-pokemon').classList.remove('d-none')
+        const tipos = responseJSON.types.map(tipos => tipos.type.name)
+
+        document.querySelector('.card-title').innerHTML = responseJSON.species.name
+        document.querySelector('.card-text').innerHTML = `Número: ${responseJSON.id}<br>
+        Tipos: ${tipos.join(', ')}<br>
+        Altura: ${responseJSON.height}<br>
+        Peso: ${responseJSON.weight}`
+        document.querySelector('#imagen-pokemon').src = responseJSON.sprites.front_default
+
+    })
+
+    .catch(error => console.error('El nombre ingresado no es válido', error))
+}
 

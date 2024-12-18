@@ -18,28 +18,50 @@
     </header>
 
     <div id="botones-menu">
-        <button type="button" class="btn btn-outline-warning" id="boton-lista-completa">Lista de Pokémons</button>
-        <button type="button" class="btn btn-outline-warning" id="boton-buscar-nombre">Buscar Pokémon por nombre</button>
-        <button type="button" class="btn btn-outline-warning" id="boton-buscar-numero">Buscar Pokémon por número</button>    
+        <button type="button" class="btn btn-outline-warning w-25" id="boton-lista-completa">Lista de Pokémons</button>
+        <div class="w-25">
+            <input type="text" class="form-control mb-2" id="nombre-pokemon" placeholder="Escribe el nombre del Pokémon"
+                value="">
+            <button type="submit" class="btn btn-outline-warning w-100" id="boton-buscar-nombre">Buscar</button>
+        </div>
+        <div class="w-25">
+            <input type="number" class="form-control mb-2" id="numero-pokemon"
+                placeholder="Escribe el número del Pokémon" value="">
+            <button type="submit" class="btn btn-outline-warning w-100" id="boton-buscar-numero">Buscar</button>
+        </div>
     </div>
 
-    <div class="d-flex justify-content-center">
-        <table id="tabla-pokemones" class="table text-center w-75 table-hover table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Pokémon</th>
-                </tr>
-            </thead>
-            <tbody id="lista-pokemones">
-                <!--  -->
-            </tbody>
-        </table>
-    </div>
+    <div id="container">
+        <div class="d-flex flex-column align-items-center">
+            <table id="tabla-pokemones" class="table text-center w-75 table-hover table-dark d-none">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Pokémon</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-pokemones">
+                    <!--  -->
+                </tbody>
+            </table>
 
-    <div class="container m-3 d-flex justify-content-between">
-            <button id="boton-anterior" type="button" class="btn btn-primary">Anterior</button>
-            <button id="boton-siguiente" type="button" class="btn btn-primary">Siguiente</button>
+
+            <div class="d-flex justify-content-center gap-5 w-75 mt-3">
+                <button id="boton-anterior" type="button" class="btn btn-outline-warning d-none">Anterior</button>
+                <button id="boton-siguiente" type="button" class="btn btn-outline-warning d-none">Siguiente</button>
+            </div>
+        </div>
+
+        <div id="info-pokemon">
+            <div class="card text-center text-bg-dark border-secondary d-none" style="width: 18rem;"
+                id="tarjeta-pokemon">
+                <img src="..." class="card-img-top mt-3" id="imagen-pokemon">
+                <div class="card-body">
+                    <h5 class="card-title"></h5>
+                    <p class="card-text"></p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="src/index.js"></script>
