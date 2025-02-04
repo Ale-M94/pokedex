@@ -12,10 +12,3 @@ function inicializar() {
 };
 
 inicializar();
-
-
-// $listaPokemon.onclick = function () {
-//     tablaPokemones.classList.remove('d-none');
-//     tarjetaPokemones.classList.add('d-none');
-//     obtenerListaPokemon(pokeApi);
-// };
