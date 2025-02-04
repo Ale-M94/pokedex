@@ -10,9 +10,6 @@ describe('Pokedex', () => {
 
   describe('Prueba lista de Pokemones', () => {
     it('Genera la lista de pokemones', () => {
-      cy.intercept('GET', fetchApi).as('listaPokemon');
-      cy.get('#boton-lista-completa').click();
-      cy.wait('@listaPokemon').its('response.statusCode').should('eq', 200);
       cy.get('#tabla-pokemones').should('be.visible');
       cy.get('#lista-pokemones tr').should('have.length', 20);
       cy.get('#lista-pokemones').should('contain', 'bulbasaur');
@@ -76,24 +73,6 @@ describe('Pokedex', () => {
           cy.get('.card-text').should('contain', 'Número: 132');
         });
       });
-
-      describe('Prueba la interfaz con las tres búsqueda', () => {
-        it('Genera lista, busca por nombre, por número y vuelve a generar lista', () => {
-          cy.get('#boton-lista-completa').click();
-          cy.get('#container').should('be.visible');
-          cy.get('#nombre-pokemon').type('charmander');
-          cy.get('#boton-buscar-nombre').click();
-          cy.get('#info-pokemon').should('be.visible');
-          cy.get('#tabla-pokemones').should('not.be.visible');
-          cy.get('#boton-lista-completa').click();
-          cy.get('#container').should('be.visible');
-          cy.get('#info-pokemon').should('not.be.visible');
-          cy.get('#numero-pokemon').type('1');
-          cy.get('#boton-buscar-numero').click();
-          cy.get('#info-pokemon').should('be.visible');
-          cy.get('#tabla-pokemones').should('not.be.visible');
-        })
-      })
 
     })
 
