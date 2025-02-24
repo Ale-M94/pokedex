@@ -1,5 +1,6 @@
 body {
     background-color: #212529;
+    color: white;
 }
 
 header {
@@ -10,25 +11,7 @@ header {
     margin: 30px;
 }
 
-#botones-menu{
-    display: flex;
-    justify-content: space-around;
-}
-
-footer{
+.list-group-item{
+    background-color: #212529;
     color: white;
-    display: flex;
-    justify-content: center;
-    font-family: Arial;
-    font-size: 15px;
-    margin: 10px 0;
-}
-
-table{
-    margin-top: 50px;
-}
-
-#info-pokemon{
-    display: flex;
-    justify-content: center;
 }
