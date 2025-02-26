@@ -7,9 +7,6 @@
     <title>Pokedex</title>
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/pokemon-solid">
-    <link href="https://fonts.cdnfonts.com/css/pokemon-hollow" rel="stylesheet">
-
 </head>
 
 <body>
@@ -17,48 +14,34 @@
         <img id="logo-header" src="img/pokemon-logo.png" alt="logo de Pokémon" class="img-fluid">
     </header>
 
-    <div id="botones-menu">
-        <div class="w-25">
-            <input type="text" class="form-control mb-2" id="nombre-pokemon" placeholder="Escribe el nombre del Pokémon"
-                value="">
-            <button type="submit" class="btn btn-outline-warning w-100" id="boton-buscar-nombre">Buscar</button>
-        </div>
-        <div class="w-25">
-            <input type="number" class="form-control mb-2" id="numero-pokemon" placeholder="Escribe el número del Pokémon" value="">
-            <button type="submit" class="btn btn-outline-warning w-100" id="boton-buscar-numero">Buscar</button>
-        </div>
-    </div>
-
-    <div id="container">
-        <div class="d-flex flex-column align-items-center">
-            <table id="tabla-pokemones" class="table text-center w-75 table-hover table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Pokémon</th>
-                    </tr>
-                </thead>
-                <tbody id="lista-pokemones">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="list-group" id="listado-pokemones">
                     <!--  -->
-                </tbody>
-            </table>
-
-
-            <div class="d-flex justify-content-center gap-5 w-75 mt-3">
-                <button id="boton-anterior" type="button" class="btn btn-outline-warning d-none">Anterior</button>
-                <button id="boton-siguiente" type="button" class="btn btn-outline-warning d-none">Siguiente</button>
-            </div>
-        </div>
-
-        <div id="info-pokemon">
-            <div class="card text-center text-bg-dark border-secondary d-none" style="width: 18rem;"
-                id="tarjeta-pokemon">
-                <img class="card-img-top mt-3" id="imagen-pokemon">
-                <div class="card-body">
-                    <h5 class="card-title"></h5>
-                    <p class="card-text"></p>
                 </div>
             </div>
+            <div class="col">
+                <div class="card d-none" id="tarjeta-pokemon">
+                    <img src="..." class="card-img-top" id="imagen-pokemon" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="nombre-pokemon">Cargando ...</h5>
+                        <p class="card-text" id="tipos-pokemon"></p>
+                        <p><strong>Altura</strong><span id="altura-pokemon"> <!-- --> </span></p>
+                        <p><strong>Peso</strong><span id="peso-pokemon"> <!-- --> </span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="pagination justify-content-center flex-wrap" id="paginador">
+            <!-- <li class="page-item" id="boton-anterior"><a class="page-link" href="#">Anterior</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item" id="boton-siguiente"><a class="page-link" href="#">Siguiente</a></li> -->
+        </ul>
+
+        <div class="text-center">
+            <p>Hay <span id="total-pokemones">...</span> pokémons en la Pokédex</p>
         </div>
     </div>
 

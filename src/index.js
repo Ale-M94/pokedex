@@ -1,14 +1,12 @@
-import {
-    obtenerListaPokemon,
-    buscarPorNombre,
-    buscarPorNumero,
-} from './ui.js';
-import { pokeApi } from './pokedex.js';
+import { obtenerPokemones } from "./ui/pokedex.js";
 
-function inicializar() {
-    obtenerListaPokemon(pokeApi);
-    buscarPorNombre();
-    buscarPorNumero();
+function iniciar() {
+    obtenerPokemones();
 };
 
-inicializar();
+iniciar();
+
+
+
+
+
